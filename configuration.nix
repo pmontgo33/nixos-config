@@ -3,7 +3,7 @@
 {
   imports = [
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
-    ./base/base_config.nix
+    ./hosts/minimal/minimal.nix
   ];
 	
   environment.systemPackages = with pkgs; [
