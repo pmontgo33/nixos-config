@@ -1,7 +1,7 @@
 { pkgs, modulesPath, ... }: 
 {
   imports = [
-    /etc/nixos/samba.nix
+    ./samba.nix
   ];
 	
   ### INSTALL PACKAGES ###
