@@ -12,4 +12,7 @@ tailscale up --ssh
 
 {
   services.tailscale.enable = true;
+  
+  networking.nameservers = [ "100.100.100.100" "1.1.1.1" "1.0.0.1" ];
+  networking.search = [ "skink-galaxy.ts.net" ];
 }
