@@ -39,14 +39,6 @@
   ### OPENSSH ###
   services.openssh.enable = true;
 #  services.openssh.settings.PermitRootLogin = "yes";
-  
-  ### TAILSCALE ###
-  services.tailscale.enable = true;
-  /* 
-  add these lines to /etc/pve/lxc/ID.conf
-  lxc.cgroup2.devices.allow: c 10:200 rwm
-  lxc.mount.entry: /dev/net/tun dev/net/tun none bind,create=file
-  */
 	
   ### SETUP PACKAGES ###
   programs.tmux = {
