@@ -11,7 +11,18 @@ tailscale up --ssh
 */
 
 {
-  services.tailscale.enable = true;
+
+  services.tailscale = {
+    enable = true;
+    openFirewall = true;
+    authKeyFile = "/etc/nixos/.tailscale-auth-key"; # Place authkey file at root directory of configuration.nix
+    extraUpFlags = [
+      "--force-reauth"
+      "--reset"
+      "--ssh"
+      "--accept-dns=false"
+    ];
+  };
   
   networking.nameservers = [ "100.100.100.100" "1.1.1.1" "1.0.0.1" ];
   networking.search = [ "skink-galaxy.ts.net" ];
