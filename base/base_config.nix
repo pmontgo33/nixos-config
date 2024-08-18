@@ -2,6 +2,7 @@
 {
   imports = [
     ./samba.nix
+    ../modules/home-manager_patrick.nix
   ];
 	
   ### INSTALL PACKAGES ###
