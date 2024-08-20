@@ -1,2 +1,3 @@
-.tailscale*
 configuration.nix
+.tailscale-auth-key
+.smbpasswd

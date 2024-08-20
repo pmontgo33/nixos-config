@@ -1,4 +1,4 @@
-{ pkgs, modulesPath, ... }: 
+{ pkgs, lib, modulesPath, ... }: 
 {
   imports = [
     ./samba.nix
@@ -36,6 +36,16 @@
       ];
     }
   ];
+
+  system.activationScripts = {
+      sambaUserSetup = {
+        text = ''
+           PATH=$PATH:${lib.makeBinPath [ pkgs.samba ]}
+           pdbedit -i smbpasswd:./smbpasswd -e tdbsam:/var/lib/samba/private/passdb.tdb                                                                       
+            '';
+        deps = [ ];
+      };
+    };
 
   ### OPENSSH ###
   services.openssh.enable = true;
