@@ -27,7 +27,7 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 	
-  security.sudo.extraRules= [
+  security.sudo.extraRules = [
     { users = [ "patrick" ];
       commands = [
         { command = "ALL" ;
@@ -37,10 +37,27 @@
     }
   ];
 
+<<<<<<< Updated upstream
+=======
+  # system.activationScripts = {
+  #     sambaUserSetup = {
+  #       text = "${pkgs.samba}/bin/pdbedit -i smbpasswd:./.smbpasswd -e tdbsam:/var/lib/samba/private/passdb.tdb";
+  #       deps = [ ];
+  #     };
+  #   };
+
+>>>>>>> Stashed changes
   ### OPENSSH ###
   services.openssh.enable = true;
 #  services.openssh.settings.PermitRootLogin = "yes";
 	
+    services.openssh.hostKeys = [
+    {
+      path = "/home/patrick/.ssh/id_ed25519";
+      type = "ed25519";
+    }
+  ];
+
   ### SETUP PACKAGES ###
   programs.tmux = {
     enable = true;
