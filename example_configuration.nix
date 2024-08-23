@@ -6,7 +6,7 @@
     (modulesPath + "/virtualisation/proxmox-lxc.nix")
     
     # Add host configuration
-    ./hosts/minimal/minimal.nix
+    ./hosts/minimal.nix
 
     # Add additional modules
     #./modules/tailscale.nix

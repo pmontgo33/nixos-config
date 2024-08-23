@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../base/base_config.nix
+    ../base/base_config.nix
   ];
 	
   environment.systemPackages = with pkgs; [

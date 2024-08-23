@@ -1,7 +1,7 @@
 { pkgs, config, lib, modulesPath, ... }:
 {
   imports = [
-    ../../base/base_config.nix
+    ../base/base_config.nix
   ];
 	#security.acme = {
     #acceptTerms = true;
