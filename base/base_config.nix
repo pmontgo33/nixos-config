@@ -37,16 +37,6 @@
     }
   ];
 
-<<<<<<< Updated upstream
-=======
-  # system.activationScripts = {
-  #     sambaUserSetup = {
-  #       text = "${pkgs.samba}/bin/pdbedit -i smbpasswd:./.smbpasswd -e tdbsam:/var/lib/samba/private/passdb.tdb";
-  #       deps = [ ];
-  #     };
-  #   };
-
->>>>>>> Stashed changes
   ### OPENSSH ###
   services.openssh.enable = true;
 #  services.openssh.settings.PermitRootLogin = "yes";

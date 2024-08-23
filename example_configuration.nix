@@ -7,6 +7,9 @@
     
     # Add host configuration
     ./hosts/minimal/minimal.nix
+
+    # Add additional modules
+    #./modules/tailscale.nix
   ];
 	
   environment.systemPackages = with pkgs; [

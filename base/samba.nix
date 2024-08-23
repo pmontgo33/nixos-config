@@ -5,8 +5,8 @@
     openFirewall = true;
     extraConfig = ''
       workgroup = WORKGROUP
-      server string = nixcloud 
-      netbios name = nixcloud
+      server string = nixos 
+      netbios name = nixos
       security = user 
       #use sendfile = yes
       #max protocol = smb2
