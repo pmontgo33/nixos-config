@@ -41,7 +41,7 @@
   services.openssh.enable = true;
 #  services.openssh.settings.PermitRootLogin = "yes";
 	
-    services.openssh.hostKeys = [
+  services.openssh.hostKeys = [
     {
       path = "/home/patrick/.ssh/id_ed25519";
       type = "ed25519";
@@ -54,11 +54,7 @@
     extraConfig = builtins.readFile ./tmux.conf;
   };
 	
-  programs.git = {
-    enable = true;
-#    userName  = "Monty";
-#    userEmail = "21371673+pmontgo33@users.noreply.github.com";
-  };
+  programs.git.enable = true;
 	
   ### ENABLE REMOTE VSCODE TO CONNECT ###
 	programs.nix-ld.enable = true;
