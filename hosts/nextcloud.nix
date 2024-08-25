@@ -16,7 +16,7 @@
 	
   services = {
     #nginx.virtualHosts = {
-    #  "nixcloud.skink-galaxy.ts.net" = {
+    #  "nextcloud.skink-galaxy.ts.net" = {
     #    forceSSL = true;
     #    enableACME = true;
     #    # Use DNS Challenege.

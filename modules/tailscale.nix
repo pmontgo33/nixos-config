@@ -21,11 +21,11 @@ tailscale up --ssh
       "--force-reauth"
       "--reset"
       "--ssh"
-#      "--accept-dns=false"
+      "--accept-dns=false"
     ];
   };
   
 #  networking.nameservers = [ "100.100.100.100"];
-#  networking.nameservers = [ "100.100.100.100" "1.1.1.1" "1.0.0.1" ];
+  networking.nameservers = [ "100.100.100.100" "1.1.1.1" "1.0.0.1" ];
   networking.search = [ "skink-galaxy.ts.net" ];
 }

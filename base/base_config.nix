@@ -2,7 +2,7 @@
 {
   imports = [
     ./samba.nix
-    ../modules/home-manager_patrick.nix
+    ../users/patrick.nix
   ];
 	
   ### INSTALL PACKAGES ###
@@ -16,37 +16,6 @@
 
   ### SET TIMEZONE ###
   time.timeZone = "America/New_York";
-
-  ### ADD AND SETUP USERS ###
-  /*
-  Generate ssh key for user
-  ssh-keygen
-  */
-  users.users.patrick = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  };
-	
-  security.sudo.extraRules = [
-    { users = [ "patrick" ];
-      commands = [
-        { command = "ALL" ;
-	  options= [ "NOPASSWD" ]; # "SETENV" # Adding the following could be a good idea
-	}
-      ];
-    }
-  ];
-
-  ### OPENSSH ###
-  services.openssh.enable = true;
-#  services.openssh.settings.PermitRootLogin = "yes";
-	
-  services.openssh.hostKeys = [
-    {
-      path = "/home/patrick/.ssh/id_ed25519";
-      type = "ed25519";
-    }
-  ];
 
   ### SETUP PACKAGES ###
   programs.tmux = {
