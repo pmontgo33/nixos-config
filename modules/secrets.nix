@@ -18,4 +18,8 @@ nix-shell -p sops --run "sops secrets/secrets.yaml"
       sha256 = "1l8ri2z9qd2hn4lggr2x14rypdymbj33yg7r7sv5z9zz10g1rlip";
     }}/modules/sops"
   ];
+
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.age.keyFile = /home/patrick/.config/sops/age/keys.txt;
+  sops.secrets.tailscale-auth-key = {};
 }
