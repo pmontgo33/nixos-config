@@ -3,8 +3,12 @@
   imports = [
     ./samba.nix
     ../users/patrick.nix
+    # ../modules/agenix.nix
+    ../modules/sops-nix.nix
   ];
 	
+  nix.settings.experimental-features = "nix-command flakes";
+
   ### INSTALL PACKAGES ###
   environment.systemPackages = with pkgs; [
     vim
