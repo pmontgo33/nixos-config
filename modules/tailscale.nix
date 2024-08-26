@@ -16,7 +16,8 @@ tailscale up --ssh
     enable = true;
 #    interfaceName = "userspace-networking";
     openFirewall = true;
-    authKeyFile = "/etc/nixos/.tailscale-auth-key"; # Place authkey file at root directory of configuration.nix
+    # authKeyFile = "/etc/nixos/.tailscale-auth-key"; # Place authkey file at root directory of configuration.nix
+    authKeyFile = "/run/secrets/tailscale-auth-key";
     extraUpFlags = [
       "--force-reauth"
       "--reset"
