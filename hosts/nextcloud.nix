@@ -3,6 +3,12 @@
   imports = [
     ../base/base_config.nix
   ];
+
+  fileSystems."/mnt/nextcloud" = {
+    device = "192.168.86.99:/mnt/HDD-Mirror-01/nextcloud";
+    fsType = "nfs";
+  };
+
 	#security.acme = {
     #acceptTerms = true;
     #defaults = {
@@ -34,6 +40,7 @@
 				*/
 				
       enable = true;
+      datadir = "/mnt/nextcloud";
       hostName = "nextcloud.skink-galaxy.ts.net";
       # Need to manually increment with every major upgrade.
       package = pkgs.nextcloud28;
@@ -65,7 +72,7 @@
       config = {
         dbtype = "pgsql";
         adminuser = "admin";
-        adminpassFile = "/etc/nixos/nextcloud.pass";
+        adminpassFile = "/run/secrets/nextcloud-admin-pass";
       };
       # Suggested by Nextcloud's health check.
       phpOptions."opcache.interned_strings_buffer" = "16";
