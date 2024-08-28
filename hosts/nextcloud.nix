@@ -6,7 +6,7 @@
 	#security.acme = {
     #acceptTerms = true;
     #defaults = {
-    #  email = "patrick@montycasa.com";
+    #  email = "address@example.com";
     #  dnsProvider = "cloudflare";
     #  # location of your CLOUDFLARE_DNS_API_TOKEN=[value]
     #  # https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#EnvironmentFile=
@@ -34,7 +34,7 @@
 				*/
 				
       enable = true;
-      hostName = "nixcloud.skink-galaxy.ts.net";
+      hostName = "nextcloud.skink-galaxy.ts.net";
       # Need to manually increment with every major upgrade.
       package = pkgs.nextcloud28;
       # Let NixOS install and configure the database automatically.

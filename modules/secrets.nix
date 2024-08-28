@@ -22,4 +22,5 @@ nix-shell -p sops --run "sops secrets/secrets.yaml"
   sops.defaultSopsFile = ../secrets/secrets.yaml;
   sops.age.keyFile = /home/patrick/.config/sops/age/keys.txt;
   sops.secrets.tailscale-auth-key = {};
+  sops.secrets.caddy-cloudflare-api-key = {};
 }
