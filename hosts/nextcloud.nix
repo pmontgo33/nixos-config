@@ -2,6 +2,7 @@
 {
   imports = [
     ../base/base_config.nix
+    ../modules/secrets.nix
   ];
 
   fileSystems."/mnt/nextcloud" = {

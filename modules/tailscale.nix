@@ -11,6 +11,9 @@ tailscale up --ssh
 */
 
 {
+  imports = [
+    ../modules/secrets.nix
+  ];
 
   services.tailscale = {
     enable = true;

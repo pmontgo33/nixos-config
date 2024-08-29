@@ -3,8 +3,6 @@
   imports = [
     ./samba.nix
     ../users/patrick.nix
-    # ../modules/agenix.nix
-    ../modules/secrets.nix
   ];
 	
   nix.settings.experimental-features = "nix-command flakes";
