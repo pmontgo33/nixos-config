@@ -73,7 +73,7 @@
       config = {
         dbtype = "pgsql";
         adminuser = "admin";
-        adminpassFile = "/run/secrets/nextcloud-admin-pass";
+        adminpassFile = /run/secrets/nextcloud-admin-pass;
       };
       # Suggested by Nextcloud's health check.
       phpOptions."opcache.interned_strings_buffer" = "16";
