@@ -10,7 +10,7 @@
     fsType = "nfs";
   };
 
-  systemd.tmpfiles.rules [ "d /run/secrets/nextcloud-admin-pass 440 root nextcloud" ];
+  systemd.tmpfiles.rules = [ "d /run/secrets/nextcloud-admin-pass 440 root nextcloud" ];
 
 	#security.acme = {
     #acceptTerms = true;
