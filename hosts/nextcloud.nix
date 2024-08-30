@@ -10,6 +10,8 @@
     fsType = "nfs";
   };
 
+  systemd.tmpfiles.rules [ "d /run/secrets/nextcloud-admin-pass 440 root nextcloud" ];
+
 	#security.acme = {
     #acceptTerms = true;
     #defaults = {
@@ -31,7 +33,7 @@
     #  };
     #};
     # 
-		
+
 		nextcloud = {
 		    /*
 				Had to run these commands in the proxmox node:
