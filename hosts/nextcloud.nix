@@ -10,7 +10,7 @@
     fsType = "nfs";
   };
 
-  systemd.tmpfiles.rules = [ "d /run/secrets/nextcloud-admin-pass 440 root nextcloud - -" ];
+  #systemd.tmpfiles.rules = [ "d /run/secrets/nextcloud-admin-pass 440 root nextcloud - -" ];
 
 	#security.acme = {
     #acceptTerms = true;
@@ -75,7 +75,7 @@
       config = {
         dbtype = "pgsql";
         adminuser = "admin";
-        adminpassFile = "/run/secrets/nextcloud-admin-pass";
+        adminpassFile = "../.nextcloud-admin-pass";
       };
       # Suggested by Nextcloud's health check.
       phpOptions."opcache.interned_strings_buffer" = "16";
