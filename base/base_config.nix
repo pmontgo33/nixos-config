@@ -25,7 +25,12 @@
     extraConfig = builtins.readFile ./tmux.conf;
   };
 	
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    extraConfig = {
+      receive.denyCurrentBranch = "updateInstead"; 
+    };
+  };
 	
   ### ENABLE REMOTE VSCODE TO CONNECT ###
 	programs.nix-ld.enable = true;
