@@ -1,3 +1,2 @@
 configuration.nix
-.tailscale-auth-key
-.smbpasswd
+.nextcloud-admin-pass
