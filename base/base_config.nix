@@ -2,6 +2,7 @@
 {
   imports = [
     ./samba.nix
+    ../users/root.nix
     ../users/patrick.nix
   ];
 	
@@ -18,6 +19,9 @@
 
   ### SET TIMEZONE ###
   time.timeZone = "America/New_York";
+
+  ### OPENSSH ###
+  services.openssh.enable = true;
 
   ### SETUP PACKAGES ###
   programs.tmux = {
