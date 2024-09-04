@@ -15,6 +15,7 @@
     git
     fail2ban
 		nix-ld
+    just
   ];
 
   ### SET TIMEZONE ###
