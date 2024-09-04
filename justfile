@@ -9,6 +9,10 @@ git-acp message:
   git commit -m "{{message}}"
   git push origin master
 
+git-cp message:
+  git commit -m "{{message}}"
+  git push origin master
+
 # this is a comment
 another-recipe:
   @echo 'This is another recipe.'
