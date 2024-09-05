@@ -14,7 +14,7 @@ tailscale up --ssh
   imports = [
     ../modules/secrets.nix
   ];
-
+    
   services.tailscale = {
     enable = true;
 #    interfaceName = "userspace-networking";
@@ -25,7 +25,7 @@ tailscale up --ssh
       "--force-reauth"
       "--reset"
       "--ssh"
-      "--accept-dns=false"
+#      "--accept-dns=false"
     ];
   };
   
