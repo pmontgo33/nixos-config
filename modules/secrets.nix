@@ -1,7 +1,7 @@
 /*
 Generate age key:
-mkdir -p ~/.config/sops/age
-nix-shell -p age --run "age-keygen -o ~/.config/sops/age/keys.txt"
+sudo mkdir -p /etc/sops/age
+nix-shell -p age --run "age-keygen -o /etc/sops/age/keys.txt"
 
 Create/Edit secrets file:
 nix-shell -p sops --run "sops secrets/secrets.yaml"
@@ -20,7 +20,7 @@ nix-shell -p sops --run "sops secrets/secrets.yaml"
   ];
 
   sops.defaultSopsFile = ../secrets/secrets.yaml;
-  sops.age.keyFile = /home/patrick/.config/sops/age/keys.txt;
+  sops.age.keyFile = /etc/sops/age/keys.txt;
   sops.secrets.tailscale-auth-key = {};
   sops.secrets.nextcloud-admin-pass = {};
 }
