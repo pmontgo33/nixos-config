@@ -26,7 +26,7 @@ in
   services.openssh.enable = true;
 #  services.openssh.settings.PermitRootLogin = "yes";
 	
-  services.openssh.hostKeys = [
+  services.openssh.hostKeys = [ #THIS IS NOT GENERATING A NEW SSH KEY
     {
       path = "/home/patrick/.ssh/id_ed25519";
       type = "ed25519";

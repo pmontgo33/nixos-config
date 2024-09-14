@@ -4,17 +4,17 @@ nrs:
 secrets:
   -nix-shell -p sops --run "sops secrets/secrets.yaml"
 
-git-acp message:
+git-acpush message:
   git add .
   git commit -m "{{message}}"
   git push origin master
 
-git-cp message:
+git-cpush message:
   git commit -m "{{message}}"
   git push origin master
 
-nextcloud-pull:
-  ssh root@100.71.96.74 "cd /etc/nixos && git pull https://github.com/pmontgo33/nixos-config.git"
+git-rpull remote:
+  ssh root@{{remote}} "cd /etc/nixos && git pull https://github.com/pmontgo33/nixos-config.git"
 
 # this is a comment
 another-recipe:
