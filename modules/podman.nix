@@ -21,4 +21,9 @@
     docker-compose # start group of containers for dev
     #podman-compose # start group of containers for dev
   ];
+
+  virtualisation.oci-containers.backend = "podman";
+  systemd.tmpfiles.rules = [
+    "d /home/patrick/containers 0755 patrick users"
+  ];
 }
