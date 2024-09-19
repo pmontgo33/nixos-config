@@ -11,8 +11,10 @@
   environment.systemPackages = with pkgs; [
 		ansible
     ansible-lint
+    terraform
 
   ];
+  nixpkgs.config.allowUnfree = true;
 
   #   virtualisation = {
   #   docker = {
