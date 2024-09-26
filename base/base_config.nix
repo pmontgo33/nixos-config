@@ -36,10 +36,10 @@
 	programs.nix-ld.enable = true;
   /*
   Create symlinks for nixos configuration files so user can edit
-  mkdir ~/etc
-  sudo mv /etc/nixos ~/etc/
-  sudo chown -R $(id -un):users ~/etc/nixos
-  sudo ln -s ~/etc/nixos /etc/
+  mkdir ~/nixos-config
+  sudo mv /etc/nixos/ ~/nixos-config
+  sudo chown -R $(id -un):users ~/nixos-config
+  sudo ln -s ~/nixos-config/ /etc/nixos
   */
 
 
