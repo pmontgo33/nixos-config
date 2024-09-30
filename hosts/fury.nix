@@ -12,7 +12,7 @@
 		ansible
     ansible-lint
     terraform
-
+    sshpass
   ];
   nixpkgs.config.allowUnfree = true;
 
