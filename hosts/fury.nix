@@ -13,6 +13,7 @@
     ansible-lint
     terraform
     sshpass
+    lazygit
   ];
   nixpkgs.config.allowUnfree = true;
 

@@ -16,6 +16,7 @@
     crowdsec
 		nix-ld
     just
+    iperf
   ];
 
   ### SET TIMEZONE ###
