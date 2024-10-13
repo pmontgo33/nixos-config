@@ -13,7 +13,7 @@
     vim
     tmux
     git
-    crowdsec
+    fail2ban
 		nix-ld
     just
     iperf
