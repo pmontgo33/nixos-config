@@ -24,6 +24,7 @@ in
 
   ### OPENSSH ###
   services.openssh.enable = true;
+  services.openssh.AllowUsers = ["patrick"];
 #  services.openssh.settings.PermitRootLogin = "yes";
 	
   services.openssh.hostKeys = [ #THIS IS NOT GENERATING A NEW SSH KEY
