@@ -15,9 +15,17 @@
     sshpass
     lazygit
   ];
+
+  boot.initrd = { supportedFilesystems = [ "nfs" ]; 
+  kernelModules = [ "nfs" ];
+  };
   nixpkgs.config.allowUnfree = true;
 
-  #   virtualisation = {
+  fileSystems."/mnt/home_media" = {
+    device = "192.168.86.99:/mnt/HDD-Mirror-01/home_media";
+    fsType = "nfs"; 
+  };
+# virtualisation = {
   #   docker = {
   #     enable = true;
   #     autoPrune = {
