@@ -9,11 +9,16 @@
   ];
 	
   environment.systemPackages = with pkgs; [
-		ansible
+    ansible
     ansible-lint
     terraform
     sshpass
     lazygit
+
+    # This is required for the ansibleguy.opnsense ansible role
+    (python3.withPackages (ps: with ps; [
+      httpx
+    ]))
   ];
 
   boot.initrd = { supportedFilesystems = [ "nfs" ]; 

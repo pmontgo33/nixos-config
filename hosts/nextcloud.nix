@@ -44,7 +44,7 @@
 				
       enable = true;
       datadir = "/mnt/nextcloud";
-      hostName = "nextcloud.skink-galaxy.ts.net";
+      hostName = "nextcloud.montycasa.com";
       # Need to manually increment with every major upgrade.
       package = pkgs.nextcloud28;
       # Let NixOS install and configure the database automatically.
