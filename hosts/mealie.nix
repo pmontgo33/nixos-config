@@ -7,7 +7,7 @@
 	
   environment.systemPackages = with pkgs; [
 		mealie
-  ]
+  ];
   
   services.mealie.enable = true;
 
