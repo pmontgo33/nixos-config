@@ -7,5 +7,9 @@
 	
   environment.systemPackages = with pkgs; [
 		mealie
-  ];
+  ]
+  
+  services.mealie.enable = true;
+
+  #networking.firewall.allowedTCPPorts = [ 8443 ];
 }
