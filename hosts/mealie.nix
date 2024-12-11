@@ -11,5 +11,5 @@
   
   services.mealie.enable = true;
 
-  #networking.firewall.allowedTCPPorts = [ 8443 ];
+  networking.firewall.allowedTCPPorts = [ 9000 ];
 }
