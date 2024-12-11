@@ -1,4 +1,11 @@
+{ config, ... }:
+
 {
+
+imports = [
+    ../modules/secrets.nix
+];
+
 systemd.tmpfiles.rules = [
   "d /home/patrick/containers/code-server 0755 patrick users"
 ];
@@ -7,7 +14,7 @@ systemd.tmpfiles.rules = [
    code-server = {
      image = "lscr.io/linuxserver/code-server:latest";
      autoStart = true;
-     extraOptions = [ "--pull=newer" ];
+     extraOptions = [ "--pull=newer" "--privileged" ];
      ports = [ "8443:8443" ];
      environment = {
        PUID = "1000";
@@ -18,6 +25,7 @@ systemd.tmpfiles.rules = [
      };
      volumes = [
        "/home/patrick/containers/code-server:/config"
+       "/home/patrick:/home/patrick"
      ];
    };
  };

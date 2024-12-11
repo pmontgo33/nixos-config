@@ -2,7 +2,7 @@ nrs:
   sudo nixos-rebuild switch
 
 secrets:
-  -nix-shell -p sops --run "sops secrets/secrets.yaml"
+  -nix-shell -p sops --run "SOPS_AGE_KEY_FILE='/etc/sops/age/keys.txt' sops secrets/secrets.yaml"
 
 git-acpush message:
   git add .

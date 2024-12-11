@@ -23,4 +23,5 @@ nix-shell -p sops --run "sops secrets/secrets.yaml"
   sops.age.keyFile = /etc/sops/age/keys.txt;
   sops.secrets.tailscale-auth-key = {};
   sops.secrets.nextcloud-admin-pass = {};
+  sops.secrets.code-server-password = {};
 }
