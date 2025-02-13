@@ -2,18 +2,18 @@
 
 {
   # Enable the Nix-Bitcoin service
-  services.nixbitcoin = {
-    enable = true;
-    dataDir = "/var/lib/nixbitcoin";
-    rpcUser = "myuser";
-    rpcPassword = "mypassword";
-    extraConfig = ''
-      server=1
-      txindex=1
-      zmqpubrawblock=tcp://127.0.0.1:28332
-      zmqpubrawtx=tcp://127.0.0.1:28333
-    '';
-  };
+  # services.nixbitcoin = {
+  #   enable = true;
+  #   dataDir = "/var/lib/nixbitcoin";
+  #   rpcUser = "myuser";
+  #   rpcPassword = "mypassword";
+  #   extraConfig = ''
+  #     server=1
+  #     txindex=1
+  #     zmqpubrawblock=tcp://127.0.0.1:28332
+  #     zmqpubrawtx=tcp://127.0.0.1:28333
+  #   '';
+  # };
 
   # Enable the Lightning node service
   services.lightning = {
@@ -29,19 +29,19 @@
     '';
   };
 
-  # Enable the Liquid node service
-  services.liquid = {
-    enable = true;
-    dataDir = "/var/lib/liquid";
-    rpcUser = "myuser";
-    rpcPassword = "mypassword";
-    extraConfig = ''
-      server=1
-      txindex=1
-      zmqpubrawblock=tcp://127.0.0.1:28334
-      zmqpubrawtx=tcp://127.0.0.1:28335
-    '';
-  };
+  # # Enable the Liquid node service
+  # services.liquid = {
+  #   enable = true;
+  #   dataDir = "/var/lib/liquid";
+  #   rpcUser = "myuser";
+  #   rpcPassword = "mypassword";
+  #   extraConfig = ''
+  #     server=1
+  #     txindex=1
+  #     zmqpubrawblock=tcp://127.0.0.1:28334
+  #     zmqpubrawtx=tcp://127.0.0.1:28335
+  #   '';
+  # };
 
   # Open the necessary ports
   networking.firewall.allowedTCPPorts = [ 8333 9735 7041 ];
