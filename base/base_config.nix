@@ -17,6 +17,7 @@
 		nix-ld
     just
     iperf
+    dig
   ];
 
   ### SET TIMEZONE ###
