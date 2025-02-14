@@ -2,6 +2,8 @@
 
 {
   imports = [
+    ../base/base_config.nix
+    ../modules/tailscale.nix
     ../modules/secrets.nix
   ];
   # Enable the Nix-Bitcoin service
