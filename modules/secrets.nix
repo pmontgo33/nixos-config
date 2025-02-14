@@ -24,4 +24,5 @@ nix-shell -p sops --run "sops secrets/secrets.yaml"
   sops.secrets.tailscale-auth-key = {};
   sops.secrets.nextcloud-admin-pass = {};
   sops.secrets.code-server-password = {};
+  sops.secrets.lightning-domain = {};
 }

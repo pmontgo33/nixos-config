@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../modules/secrets.nix
+  ];
   # Enable the Nix-Bitcoin service
   # services.nixbitcoin = {
   #   enable = true;
@@ -20,12 +23,12 @@
     enable = true;
     dataDir = "/var/lib/lightning";
     network = "mainnet";
-    bitcoindRpcUrl = "http://myuser:mypassword@127.0.0.1:8332";
+    # bitcoindRpcUrl = "http://myuser:mypassword@127.0.0.1:8332";
     extraConfig = ''
       log-level=debug
       log-file=/var/log/lightning.log
       bind-addr=0.0.0.0:9735
-      announce-addr=your-public-ip:9735
+      announce-addr=${secrets.lightning-domain}
     '';
   };
 
