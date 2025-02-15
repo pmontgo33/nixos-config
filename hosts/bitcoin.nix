@@ -6,6 +6,10 @@
     ../modules/tailscale.nix
     ../modules/secrets.nix
   ];
+
+  environment.systemPackages = with pkgs; [
+		lightning
+  ];
   # Enable the Nix-Bitcoin service
   # services.nixbitcoin = {
   #   enable = true;
@@ -30,7 +34,7 @@
       log-level=debug
       log-file=/var/log/lightning.log
       bind-addr=0.0.0.0:9735
-      announce-addr=${secrets.lightning-domain}
+      announce-addr=${config.sops.secrets.lightning-domain.path}
     '';
   };
 
