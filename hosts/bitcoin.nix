@@ -1,62 +1,66 @@
 { config, pkgs, ... }:
 
+let
+  # Import the nixbitcoin modules
+  nixbitcoin = import (builtins.fetchTarball {
+    url = "https://github.com/fort-nix/nix-bitcoin/releases/download/v0.0.118/nix-bitcoin-0.0.118.tar.gz";
+    sha256 = "3a3f5775a4ff3a51f611c70c15459f4e277f0e79303f7bef4f4b6da49da660b1"; # Replace with actual hash
+  }) { inherit pkgs; };
+  
+  imports = [
+    ../modules/secrets.nix
+  ]
+  # Your custom domain
+  domain = config.sops.secrets.bitcoin-domain.path;
+in
 {
   imports = [
+    nixbitcoin.modules.presets.secure
     ../base/base_config.nix
     ../modules/tailscale.nix
-    ../modules/secrets.nix
   ];
-
-  environment.systemPackages = with pkgs; [
-		lightning
-  ];
-  # Enable the Nix-Bitcoin service
-  # services.nixbitcoin = {
-  #   enable = true;
-  #   dataDir = "/var/lib/nixbitcoin";
-  #   rpcUser = "myuser";
-  #   rpcPassword = "mypassword";
-  #   extraConfig = ''
-  #     server=1
-  #     txindex=1
-  #     zmqpubrawblock=tcp://127.0.0.1:28332
-  #     zmqpubrawtx=tcp://127.0.0.1:28333
-  #   '';
-  # };
-
-  # Enable the Lightning node service
-  services.lightning = {
+  
+  # Enable Bitcoin Core (if running full node)
+  services.bitcoind.enable = true;
+  services.bitcoind.network = "main";
+  services.bitcoind.dataDir = "/var/lib/bitcoind";
+  
+  # Enable LND with custom domain settings
+  services.lnd = {
     enable = true;
-    dataDir = "/var/lib/lightning";
-    network = "mainnet";
-    # bitcoindRpcUrl = "http://myuser:mypassword@127.0.0.1:8332";
+    dataDir = "/var/lib/lnd";
+    
     extraConfig = ''
-      log-level=debug
-      log-file=/var/log/lightning.log
-      bind-addr=0.0.0.0:9735
-      announce-addr=${config.sops.secrets.lightning-domain.path}
+      [Application Options]
+      debuglevel=info
+      tlsextraip=0.0.0.0
+      tlsextradomain=lnd.${domain}
+      externalip=lnd.${domain}
+      
+      [Bitcoin]
+      bitcoin.active=1
+      bitcoin.mainnet=1
+      bitcoin.node=bitcoind
+      
+      [tor]
+      tor.active=true
+      tor.v3=true
     '';
   };
-
-  # # Enable the Liquid node service
-  # services.liquid = {
-  #   enable = true;
-  #   dataDir = "/var/lib/liquid";
-  #   rpcUser = "myuser";
-  #   rpcPassword = "mypassword";
-  #   extraConfig = ''
-  #     server=1
-  #     txindex=1
-  #     zmqpubrawblock=tcp://127.0.0.1:28334
-  #     zmqpubrawtx=tcp://127.0.0.1:28335
-  #   '';
-  # };
-
-  # Open the necessary ports
-  networking.firewall.allowedTCPPorts = [ 8333 9735 7041 ];
-
-  # Automatically start the services on system boot
-  systemd.services.nixbitcoin.wantedBy = [ "multi-user.target" ];
-  systemd.services.lightning.wantedBy = [ "multi-user.target" ];
-  systemd.services.liquid.wantedBy = [ "multi-user.target" ];
+  
+  # Firewall: open web ports
+  networking.firewall.allowedTCPPorts = [ 80 443 8333 9735 3000 3002 ];
+  
+  # Storage configuration remains the same
+  fileSystems."/var/lib/bitcoind" = {
+    device = "/dev/disk/by-label/bitcoin";
+    fsType = "ext4";
+    options = [ "noatime" ];
+  };
+  
+  fileSystems."/var/lib/lnd" = {
+    device = "/dev/disk/by-label/lightning";
+    fsType = "ext4";
+    options = [ "noatime" ];
+  };
 }
