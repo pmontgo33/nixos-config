@@ -8,7 +8,7 @@ in
   imports = [
     (fetchTarball {
       url = "https://github.com/fort-nix/nix-bitcoin/releases/download/v0.0.119/nix-bitcoin-0.0.119.tar.gz";
-      sha256 = "1s3c5yjl4n39m6qsd4vb246zfqr8xlgdw3xzgy6vj21qxa33xi5d"; # Replace with actual hash
+      sha256 = "1q78ajffi79jl4nml02j2g6aa283xg1p44kpnq7fd78by62axwzk"; # Replace with actual hash
     } + "/modules/presets/secure.nix")
     ../base/base_config.nix
     ../modules/tailscale.nix
