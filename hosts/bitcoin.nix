@@ -15,7 +15,7 @@ let
 in
 {
   imports = [
-    nix-bitcoin.modules.presets.secure
+    nixbitcoin.modules.presets.secure
     ../base/base_config.nix
     ../modules/tailscale.nix
   ];
