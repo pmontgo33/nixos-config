@@ -1,21 +1,11 @@
 { config, pkgs, ... }:
 
-let
-  # Import the nixbitcoin modules
-  nixbitcoin = import (builtins.fetchTarball {
-    url = "https://github.com/fort-nix/nix-bitcoin/releases/download/v0.0.119/nix-bitcoin-0.0.119.tar.gz";
-  #  sha256 = "3a3f5775a4ff3a51f611c70c15459f4e277f0e79303f7bef4f4b6da49da660b1"; # Replace with actual hash
-  }) { inherit pkgs; };
-  
-  imports = [
-    ../modules/secrets.nix
-  ];
-  # Your custom domain
-  domain = config.sops.secrets.bitcoin-domain.path;
-in
 {
   imports = [
-    nixbitcoin.modules.presets.secure
+    (fetchTarball {
+      url = "https://github.com/fort-nix/nix-bitcoin/releases/download/v0.0.119/nix-bitcoin-0.0.119.tar.gz";
+      sha256 = "1s3c5yjl4n39m6qsd4vb246zfqr8xlgdw3xzgy6vj21qxa33xi5d"; # Replace with actual hash
+    } + "/modules/presets/secure.nix")
     ../base/base_config.nix
     ../modules/tailscale.nix
   ];
