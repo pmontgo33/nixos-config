@@ -3,8 +3,8 @@
 let
   # Import the nixbitcoin modules
   nixbitcoin = import (builtins.fetchTarball {
-    url = "https://github.com/fort-nix/nix-bitcoin/releases/download/v0.0.118/nix-bitcoin-0.0.118.tar.gz";
-    sha256 = "3a3f5775a4ff3a51f611c70c15459f4e277f0e79303f7bef4f4b6da49da660b1"; # Replace with actual hash
+    url = "https://github.com/fort-nix/nix-bitcoin/releases/download/v0.0.118/nix-bitcoin-0.0.119.tar.gz";
+  #  sha256 = "3a3f5775a4ff3a51f611c70c15459f4e277f0e79303f7bef4f4b6da49da660b1"; # Replace with actual hash
   }) { inherit pkgs; };
   
   imports = [
