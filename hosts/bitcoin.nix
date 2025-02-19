@@ -9,7 +9,7 @@ let
   
   imports = [
     ../modules/secrets.nix
-  ]
+  ];
   # Your custom domain
   domain = config.sops.secrets.bitcoin-domain.path;
 in
