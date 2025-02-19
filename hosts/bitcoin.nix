@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 
+let
+  # Your custom domain
+  domain = config.sops.secrets.bitcoin-domain.path;
+in
 {
   imports = [
     (fetchTarball {
