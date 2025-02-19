@@ -1,21 +1,22 @@
 { config, pkgs, ... }:
 
 let
+  nix-bitcoin = builtins.fetchTarball {
+    url = "https://github.com/fort-nix/nix-bitcoin/releases/download/v0.0.119/nix-bitcoin-0.0.119.tar.gz";
+    sha256 = "1q78ajffi79jl4nml02j2g6aa283xg1p44kpnq7fd78by62axwzk";
+  };
   # Your custom domain
   domain = config.sops.secrets.bitcoin-domain.path;
 in
 {
   imports = [
-    (fetchTarball {
-      url = "https://github.com/fort-nix/nix-bitcoin/releases/download/v0.0.119/nix-bitcoin-0.0.119.tar.gz";
-      sha256 = "1q78ajffi79jl4nml02j2g6aa283xg1p44kpnq7fd78by62axwzk"; # Replace with actual hash
-    } + "/modules/modules.nix")
+    "${nix-bitcoin}/modules/modules.nix"
     ../base/base_config.nix
     ../modules/tailscale.nix
   ];
 
   # Enable nix-bitcoin with automatic secret generation
-  services.nix-bitcoin = {
+  nix-bitcoin = {
     enable = true;
     preset = "secure";
     generateSecrets = true;  # Automatically generate required secrets
