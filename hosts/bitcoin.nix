@@ -13,11 +13,21 @@ in
     ../base/base_config.nix
     ../modules/tailscale.nix
   ];
+
+  # Enable nix-bitcoin with automatic secret generation
+  services.nixbitcoin = {
+    enable = true;
+    preset = "secure";
+    generateSecrets = true;  # Automatically generate required secrets
+  };
   
   # Enable Bitcoin Core (if running full node)
-  services.bitcoind.enable = true;
-  services.bitcoind.network = "main";
-  services.bitcoind.dataDir = "/var/lib/bitcoind";
+  # services.bitcoind.enable = true;
+  # services.bitcoind.network = "main";
+  # services.bitcoind.dataDir = "/var/lib/bitcoind";
+
+  # Disable Bitcoin Core - we'll use neutrino mode instead
+  services.bitcoind.enable = false;
   
   # Enable LND with custom domain settings
   services.lnd = {
@@ -34,23 +44,36 @@ in
       [Bitcoin]
       bitcoin.active=1
       bitcoin.mainnet=1
-      bitcoin.node=bitcoind
+      bitcoin.node=neutrino
+
+      [neutrino]
+      neutrino.connect=faucet.lightning.community
+      neutrino.connect=lnd.bitrefill.com
+      neutrino.connect=btcd-mainnet.lightning.computer
+      neutrino.feeurl=https://nodes.lightning.computer/fees/v1/btc-fee-estimates.json
       
       [tor]
       tor.active=true
       tor.v3=true
     '';
   };
+
+  # Enable Tor for privacy
+  services.tor.enable = true;
   
-  # Firewall: open web ports
-  networking.firewall.allowedTCPPorts = [ 80 443 8333 9735 3000 3002 ];
+  # Optional: Enable Lightning web interface
+  services.rtl.enable = true;
+  services.rtl.port = 3000;
+  
+  # Networking: Open required ports
+  networking.firewall.allowedTCPPorts = [ 9735 3000 ]; # [ 80 443 8333 9735 3000 3002 ];
   
   # Storage configuration remains the same
-  fileSystems."/var/lib/bitcoind" = {
-    device = "/dev/disk/by-label/bitcoin";
-    fsType = "ext4";
-    options = [ "noatime" ];
-  };
+  # fileSystems."/var/lib/bitcoind" = {
+  #   device = "/dev/disk/by-label/bitcoin";
+  #   fsType = "ext4";
+  #   options = [ "noatime" ];
+  # };
   
   fileSystems."/var/lib/lnd" = {
     device = "/dev/disk/by-label/lightning";
