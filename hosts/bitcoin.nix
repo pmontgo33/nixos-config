@@ -15,12 +15,9 @@ in
     ../modules/tailscale.nix
   ];
 
-  # Enable nix-bitcoin with automatic secret generation
-  nix-bitcoin = {
-    enable = true;
-    preset = "secure";
-    generateSecrets = true;  # Automatically generate required secrets
-  };
+  # Automatically generate all secrets required by services.
+  # The secrets are stored in /etc/nix-bitcoin-secrets
+  nix-bitcoin.generateSecrets = true;
   
   # Enable Bitcoin Core (if running full node)
   # services.bitcoind.enable = true;
