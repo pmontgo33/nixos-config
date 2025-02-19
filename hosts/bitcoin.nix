@@ -15,7 +15,7 @@ in
   ];
 
   # Enable nix-bitcoin with automatic secret generation
-  services.nixbitcoin = {
+  services.nix-bitcoin = {
     enable = true;
     preset = "secure";
     generateSecrets = true;  # Automatically generate required secrets
