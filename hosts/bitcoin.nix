@@ -25,7 +25,7 @@ in
   # services.bitcoind.dataDir = "/var/lib/bitcoind";
 
   # Disable Bitcoin Core - we'll use neutrino mode instead
-  services.bitcoind.enable = false;
+  #services.bitcoind.enable = false;
   
   # Enable LND with custom domain settings
   services.lnd = {
